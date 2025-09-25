@@ -1,0 +1,150 @@
+name: Bug Report - iso-builder
+description: Report a bug in the iso-builder submodule
+title: "[Bug] iso-builder: "
+labels: ["bug", "iso-builder"]
+assignees:
+  - macjunkins
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Bug Report for iso-builder
+
+        Thank you for reporting a bug in the iso-builder submodule of AcreetionOS ARM64.
+
+        Please provide detailed information to help us diagnose and fix the issue.
+
+  - type: dropdown
+    id: bug-category
+    attributes:
+      label: Bug Category
+      description: What type of bug is this?
+      options:
+        - Build Process Failure
+        - Package Resolution Error
+        - Cross-compilation Issue
+        - Bootloader Configuration
+        - ISO Generation Problem
+        - Configuration File Error
+        - Hardware Compatibility Issue
+        - Performance/Size Issue
+      default: 0
+    validations:
+      required: true
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of the bug
+      placeholder: Describe what happened and what you expected to happen
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce the behavior
+      placeholder: |
+        1. Run build command...
+        2. Configure settings...
+        3. See error...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Development Environment
+      description: Where did this occur?
+      options:
+        - macOS ARM64 (Apple Silicon)
+        - macOS x86_64 (Intel)
+        - Linux ARM64
+        - Linux x86_64
+        - Docker Container
+        - QEMU Emulation
+        - Other (please specify in description)
+    validations:
+      required: true
+
+  - type: textarea
+    id: system-info
+    attributes:
+      label: System Information
+      description: |
+        Provide build environment details:
+        - Host OS and version
+        - Cross-compilation toolchain version
+        - Available disk space
+        - Memory available
+        - archiso version (if known)
+      placeholder: |
+        Host OS: Ubuntu 22.04 LTS
+        Toolchain: gcc-aarch64-linux-gnu 11.4.0
+        Disk Space: 50GB available
+        Memory: 16GB RAM
+        archiso: v66 (example)
+    validations:
+      required: true
+
+  - type: textarea
+    id: error-output
+    attributes:
+      label: Error Output
+      description: Copy and paste any error messages or logs
+      placeholder: Paste error output here
+      render: shell
+
+  - type: dropdown
+    id: milestone-impact
+    attributes:
+      label: Milestone Impact
+      description: How does this bug affect milestone progress?
+      options:
+        - Blocking - Prevents milestone completion
+        - High - Significantly impacts milestone work
+        - Medium - Moderate impact on development
+        - Low - Minor issue, workaround available
+        - None - No milestone impact
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: cross-repository
+    attributes:
+      label: Cross-Repository Impact
+      description: Does this bug affect other submodules?
+      options:
+        - label: This bug affects other submodules
+        - label: Integration testing is required
+        - label: Submodule synchronization may be needed
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: |
+        Add any other context about the problem:
+        - Build configuration used
+        - Target hardware platform
+        - Package list modifications
+        - Previous successful builds
+      placeholder: Any additional information that might help
+
+  - type: checkboxes
+    id: validation
+    attributes:
+      label: Validation Checklist
+      description: Please confirm you have done the following
+      options:
+        - label: I have searched existing issues for duplicates
+          required: true
+        - label: I have tested this on the latest version of the submodule
+          required: true
+        - label: I have included all relevant error output and logs
+          required: true
+        - label: I have provided steps to reproduce the issue
+          required: true

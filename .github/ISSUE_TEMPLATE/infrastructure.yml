@@ -1,0 +1,194 @@
+name: Infrastructure Issue - iso-builder
+description: Report build system, toolchain, or CI/CD issues in iso-builder
+title: "[Infrastructure] iso-builder: "
+labels: ["infrastructure", "iso-builder"]
+assignees:
+  - macjunkins
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Infrastructure Issue for iso-builder
+
+        Report build system problems, toolchain issues, CI/CD workflow problems, or development environment issues.
+
+  - type: dropdown
+    id: infrastructure-category
+    attributes:
+      label: Infrastructure Category
+      description: What type of infrastructure issue is this?
+      options:
+        - Cross-compilation Toolchain
+        - Build Environment Setup
+        - Package Repository Access
+        - archiso Framework Issues
+        - Disk Space/Storage Problems
+        - Memory/Performance Issues
+        - Network/Download Problems
+        - Dependency Resolution
+      default: 0
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue-description
+    attributes:
+      label: Issue Description
+      description: Clearly describe the infrastructure problem
+      placeholder: |
+        Describe the infrastructure issue:
+        - What is not working?
+        - When does the problem occur?
+        - What should be happening instead?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected-platform
+    attributes:
+      label: Affected Platform
+      description: Which platform(s) are affected?
+      options:
+        - macOS ARM64 (Apple Silicon)
+        - macOS x86_64 (Intel)
+        - Linux ARM64 (native)
+        - Linux x86_64 (native)
+        - Docker on ARM64
+        - Docker on x86_64
+        - QEMU ARM64 emulation
+        - GitHub Actions CI
+        - All platforms
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: Steps to Reproduce
+      description: Detailed steps to reproduce the infrastructure issue
+      placeholder: |
+        1. Set up build environment...
+        2. Run build command...
+        3. Observe failure...
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment-details
+    attributes:
+      label: Environment Details
+      description: |
+        Provide detailed environment information:
+        - Host operating system and version
+        - Cross-compilation toolchain details
+        - Available system resources (RAM, disk space)
+        - archiso version and configuration
+        - Package repository configuration
+      placeholder: |
+        Host OS: Ubuntu 22.04.3 LTS
+        Toolchain: gcc-aarch64-linux-gnu 11.4.0-1ubuntu1~22.04
+        RAM: 16GB total, 12GB available
+        Disk: 100GB total, 45GB available
+        archiso: Version 66-1
+        Repositories: AcreetionOS ARM64 (if configured)
+    validations:
+      required: true
+
+  - type: textarea
+    id: error-logs
+    attributes:
+      label: Error Output and Logs
+      description: Paste relevant error messages, logs, and command output
+      placeholder: Paste error output here
+      render: shell
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Issue Severity
+      description: How severely does this impact development?
+      options:
+        - Critical - Blocks all development work
+        - High - Blocks major functionality
+        - Medium - Impacts some workflows
+        - Low - Minor inconvenience, workarounds available
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: cross-compilation
+    attributes:
+      label: Cross-Compilation Issues
+      description: Is this related to ARM64 cross-compilation?
+      options:
+        - label: This is an ARM64 cross-compilation issue
+        - label: Problem affects both native and cross-compilation
+        - label: Toolchain configuration issue
+        - label: Package dependency problem
+
+  - type: checkboxes
+    id: submodule-impact
+    attributes:
+      label: Submodule Impact
+      description: How does this affect other submodules?
+      options:
+        - label: Affects multiple submodules
+        - label: Blocks submodule integration
+        - label: Requires coordinated fixes
+        - label: Only affects this submodule
+
+  - type: textarea
+    id: attempted-solutions
+    attributes:
+      label: Attempted Solutions
+      description: What have you tried to fix this issue?
+      placeholder: |
+        Describe what you've tried:
+        - Reinstalled toolchain packages
+        - Cleared build cache
+        - Modified configuration settings
+        - Tried different package sources
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: What should happen when the infrastructure is working correctly?
+      placeholder: Describe the expected behavior
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: |
+        Any additional context that might help:
+        - Previous successful builds
+        - Recent system changes
+        - Network configuration
+        - Custom build modifications
+      placeholder: |
+        Additional information:
+        - Last successful build: 2024-01-15
+        - Recent changes: Updated cross-compilation toolchain
+        - Custom modifications: Added Pine64 support
+
+  - type: checkboxes
+    id: validation
+    attributes:
+      label: Validation Checklist
+      description: Please confirm you have done the following
+      options:
+        - label: I have searched existing issues for similar problems
+          required: true
+        - label: I have included complete error output and logs
+          required: true
+        - label: I have provided detailed environment information
+          required: true
+        - label: I have described steps to reproduce the issue
+          required: true

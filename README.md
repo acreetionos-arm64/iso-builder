@@ -1,9 +1,12 @@
-# AcreetionOS ARM64 Port Project
-# copyright 2025
+# AcreetionOS ISO Builder - ARM64 Port
 
-This repository contains the comprehensive ARM64 port of AcreetionOS Linux - an ambitious project to bring the lightweight, stable AcreetionOS distribution to ARM64 architecture.
+**Repository**: [`acreetionos-arm64/iso-builder`](https://github.com/acreetionos-arm64/iso-builder)
+**Purpose**: Main archiso build system for AcreetionOS ARM64 port
+**Organization**: [`acreetionos-arm64`](https://github.com/acreetionos-arm64)
 
-**Main AcreetionOS**: [www.acreetionos.org](https://www.acreetionos.org) | **Original x86_64 ISO**: Available at main website
+This repository contains the complete archiso build system for creating AcreetionOS ISOs, currently supporting x86_64 with ARM64 conversion underway.
+
+**AcreetionOS Upstream**: [gitlab.acreetionos.org](https://gitlab.acreetionos.org) | **Original x86_64 ISO**: [www.acreetionos.org](https://www.acreetionos.org)
 
 ## Project Mission
 
@@ -11,9 +14,9 @@ This project aims to port the complete AcreetionOS Linux distribution from x86_6
 
 ## Project Status: **In Active Development**
 
-**Current Phase**: Foundation and Infrastructure (Phase 1 of 4)
-**Estimated Completion**: Q2 2026 (24-30 week timeline)
-**Issues Tracked**: [24 comprehensive GitLab issues](https://gitlab.acreetionos.org/acreetionos_on_arm/acreetionos-junkins-fork/-/issues)
+**Current Phase**: Milestone 0 - Repository Infrastructure Setup
+**Timeline**: 18-36 months sustainable side project approach
+**Multi-Repository Architecture**: Part of [`acreetionos-arm64`](https://github.com/acreetionos-arm64) organization
 
 ## ARM64 Port Features
 
@@ -96,14 +99,29 @@ This ARM64 port project welcomes contributions from:
 
 **Getting Started**: Check the [GitLab issues](https://gitlab.acreetionos.org/acreetionos_on_arm/acreetionos-junkins-fork/-/issues) for tasks matching your expertise.
 
+## Multi-Repository Structure
+
+This repository is part of the [`acreetionos-arm64`](https://github.com/acreetionos-arm64) organization:
+
+- **[workspace](https://github.com/acreetionos-arm64/workspace)** - Main coordination hub
+- **[iso-builder](https://github.com/acreetionos-arm64/iso-builder)** - This repository (build system)
+- **[custom-packages](https://github.com/acreetionos-arm64/custom-packages)** - AcreetionOS components
+- **[arm64-toolchain](https://github.com/acreetionos-arm64/arm64-toolchain)** - Cross-compilation tools
+- **[hardware-support](https://github.com/acreetionos-arm64/hardware-support)** - Device-specific configs
+- **[boot-systems](https://github.com/acreetionos-arm64/boot-systems)** - ARM64 bootloaders
+- **[documentation](https://github.com/acreetionos-arm64/documentation)** - Technical architecture
+- **[testing-infrastructure](https://github.com/acreetionos-arm64/testing-infrastructure)** - QEMU, validation
+- **[upstream-sync](https://github.com/acreetionos-arm64/upstream-sync)** - GitLab CE coordination
+- **[releases](https://github.com/acreetionos-arm64/releases)** - ISO artifacts
+
 ## Project Information
 
-- **Project Lead**: John Junkins (@macjunkins) - ARM64 Port Development
-- **Original AcreetionOS Maintainers**: @Natalie/@LinuxGrandpa
-- **Project Status**: Phase 1 - Foundation and Infrastructure
-- **License**: GPL-3.0
-- **Repository**: [gitlab.acreetionos.org/acreetionos_on_arm/acreetionos-junkins-fork](https://gitlab.acreetionos.org/acreetionos_on_arm/acreetionos-junkins-fork)
-- **Issues Tracker**: [GitLab Issues](https://gitlab.acreetionos.org/acreetionos_on_arm/acreetionos-junkins-fork/-/issues)
+- **Project Lead**: John Junkins ([@macjunkins](https://github.com/macjunkins)) - ARM64 Port Development
+- **Organization**: [`acreetionos-arm64`](https://github.com/acreetionos-arm64) on GitHub
+- **Original AcreetionOS Team**: @Natalie/@LinuxGrandpa
+- **Project Status**: Milestone 0 - Repository Infrastructure Setup
+- **License**: MIT (organization repos) + GPL-3.0 (inherited)
+- **Upstream Coordination**: GitLab CE at [gitlab.acreetionos.org](https://gitlab.acreetionos.org)
 
 ## Project Timeline
 

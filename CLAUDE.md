@@ -1,15 +1,18 @@
-# CLAUDE.md
+# CLAUDE.md - iso-builder Repository
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code when working with the **iso-builder** submodule in the AcreetionOS ARM64 workspace.
 
-## Project Overview
+## Repository Overview
 
-This is the **AcreetionOS ARM64 Port Project** - a comprehensive effort to port the complete AcreetionOS Linux distribution from x86_64 to ARM64 architecture. The project is based on the original AcreetionOS distribution (a community-driven Linux distribution based on Arch Linux) and uses the archiso build system.
+**Repository**: `iso-builder/` (Repository #1 in WBS)
+**Purpose**: Main archiso build system for ARM64 conversion work
+**Parent Workspace**: `acreetionos-arm64/workspace`
+**WBS Prefix**: M[milestone].1.[task]
 
-**Project Lead**: John Junkins (@macjunkins)
-**Project Status**: Phase 1 - Foundation and Infrastructure
-**Timeline**: 24-30 weeks (Q2 2026 target completion)
-**Repository**: Based on original x86_64 AcreetionOS codebase
+**Current Focus**: ARM64 conversion of core build system
+- profiledef.sh conversion (arch="x86_64" → arch="aarch64")
+- Package list conversion (packages.x86_64 → packages.aarch64)
+- Boot system adaptation for ARM64 hardware
 
 ## Current Architecture (x86_64 Base)
 
@@ -65,27 +68,25 @@ mkarchiso -L AcreetionOS -v -o ../ISO . -C ./pacman.conf export PACMAN_OPTS="--o
 sudo rm -rf ./work
 ```
 
-## ARM64 Port Development Workflow
+## WBS Issues for iso-builder Repository
 
-### Phase-Based Development
-This project follows a structured 4-phase development approach:
+### Milestone 1 (M1) - Foundation & Infrastructure
+**M1.1.1** - Validate x86_64 build baseline (6-8h) `priority:critical`
+**M1.1.2** - Analyze archiso build system internals (8-10h) `priority:critical`
+**M1.1.3** - Convert profiledef.sh to ARM64 architecture (3-4h) `priority:critical`
+**M1.1.4** - Create initial packages.aarch64 package list (3-5h) `priority:critical`
+**M1.1.5** - Attempt first ARM64 build and document failures (2-3h) `priority:important`
 
-1. **Phase 1 - Foundation** (Weeks 1-12): Environment setup, repository infrastructure, core ARM64 configuration
-2. **Phase 2 - Hardware Support** (Weeks 13-20): Package porting, graphics, custom compilation, platform support
-3. **Phase 3 - Integration** (Weeks 21-26): Installer adaptation, testing, customizations validation
-4. **Phase 4 - Production** (Weeks 27-30): Infrastructure integration, final release
+### Milestone 2 (M2) - Core ARM64 Implementation
+**M2.1.1** - Convert core system packages to ARM64 (15-20h) `priority:critical`
+**M2.1.2** - Remove x86 drivers and add ARM64 hardware support (12-15h) `priority:critical`
+**M2.1.3** - Implement package validation and fallback system (8-10h) `priority:important`
+**M2.1.4** - Configure ARM64 system settings and integration (8-10h) `priority:important`
 
-### Development Tasks by Priority
-1. **Critical Path**: AcreetionOS ARM64 repository infrastructure coordination (external dependency)
-2. **High Priority**: ARM64 environment setup, profiledef.sh conversion, bootloader implementation
-3. **Medium Priority**: Package compatibility, graphics stack, custom package compilation
-4. **Lower Priority**: Performance optimization, multi-platform support, documentation
-
-### Current Development Focus (Phase 1)
-- ARM64 cross-compilation environment setup
-- AcreetionOS team coordination for ARM64 repositories
-- profiledef.sh conversion for ARM64 architecture
-- Initial packages.aarch64 creation with high-compatibility packages
+### Development Workflow
+**Issue Creation**: All issues MUST follow WBS format: `M[milestone].1.[task] - [Description]`
+**Dependencies**: Strict sequential completion following issue dependencies
+**Labels Required**: `iso-builder`, `priority:critical/important`, `complexity:low/medium/high`
 
 ## Important Notes
 
@@ -104,26 +105,24 @@ This project follows a structured 4-phase development approach:
 - **External Dependencies**: Requires AcreetionOS team coordination for ARM64 repositories
 - **Target Platforms**: Raspberry Pi 4/5, Pine64, and other ARM64 boards
 
-## Project Status & Tracking
+## Current Status & Next Actions
 
-### Current Status: Phase 1 - Foundation and Infrastructure
-- **Repository Analysis**: ✅ Complete (comprehensive technical analysis in `analysis/` directory)
-- **GitLab Issues**: ✅ 24 issues created across 4 development phases
-- **ARM64 Environment**: 🔄 In progress (Issue #1)
-- **Repository Infrastructure**: 🔄 Critical path item (Issue #3)
+### Ready to Begin: M1.1.1 (Critical Path Starter)
+**M1.1.1 - Validate x86_64 build baseline**: Zero dependencies, ready to execute
+- Confirm existing build scripts work in GitHub environment
+- Document dependencies and system requirements
+- Create reproducible build environment (Docker/VM)
 
 ### Issue Tracking
-- **GitLab Issues**: [24 comprehensive issues](https://gitlab.acreetionos.org/acreetionos_on_arm/acreetionos-junkins-fork/-/issues)
-- **Phase 1**: Issues #1-#8 (Foundation and Infrastructure)
-- **Phase 2**: Issues #9-#16 (Hardware Support and Drivers)
-- **Phase 3**: Issues #17-#22 (System Integration and Testing)
-- **Phase 4**: Issues #23-#24 (Production Readiness)
+- **GitHub Issues**: All iso-builder issues in [workspace project board](https://github.com/orgs/acreetionos-arm64/projects/2)
+- **M1 Issues**: 5 issues (M1.1.1 through M1.1.5)
+- **M2 Issues**: 4 issues (M2.1.1 through M2.1.4)
+- **Total**: 9 iso-builder specific issues in WBS system
 
-### Technical Documentation
-- **[Repository Analysis](analysis/repository-analysis.md)**: Complete architectural breakdown and ARM64 considerations
-- **[ARM64 Compatibility Matrix](analysis/arm64-package-compatibility.md)**: Package-by-package analysis for ARM64 porting
-- **[AcreetionOS Customizations](analysis/acreetion-customizations.md)**: Custom features and ARM64 compatibility assessment
-- **[ARM64 Port Roadmap](analysis/arm64-port-roadmap.md)**: Detailed development plan, timeline, and risk assessment
+### Dependencies & Sequencing
+- M1.1.1 → M1.1.2 → M1.1.3 → M1.1.4 → M1.1.5 (M1 sequence)
+- M1 completion → M2.1.1 → M2.1.2 → M2.1.3 → M2.1.4 (M2 sequence)
+- Parallel research: M1.3.x (documentation) tasks can run concurrently
 
 ## Development Commands for ARM64 Port
 
@@ -155,8 +154,14 @@ This project follows a structured 4-phase development approach:
 3. **Custom package compilation**: 25 packages need ARM64 builds
 4. **Multi-platform testing**: Requires ARM64 hardware for validation
 
-### Current Priority Actions:
-1. Complete Issue #3: Request AcreetionOS ARM64 repository infrastructure
-2. Start Issue #1: Set up ARM64 cross-compilation environment
-3. Begin Issue #5: Convert profiledef.sh for ARM64 architecture
-4. Coordinate with AcreetionOS maintainers for repository support
+### Current Priority Actions (WBS Order):
+1. **M1.1.1**: Validate x86_64 build baseline (ready to execute)
+2. **M1.1.2**: Analyze archiso build system internals (depends on M1.1.1)
+3. **M1.1.3**: Convert profiledef.sh for ARM64 architecture (depends on M1.1.2)
+4. **M1.1.4**: Create initial packages.aarch64 package list (depends on M1.1.3)
+
+### WBS Compliance Reminder
+- All new issues MUST use WBS numbering: `M[milestone].1.[task] - [Description]`
+- Repository number for iso-builder is **1** in the WBS system
+- Follow strict dependency sequencing - no parallel work within critical path
+- Update issue status in project board as work progresses
